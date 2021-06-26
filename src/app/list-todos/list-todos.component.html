@@ -1,0 +1,32 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<h1>My Todo's</h1>
+<div class="alert alert-success" *ngIf ='message'>{{message}}</div>
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Description</th>
+      <th>Target Date</th>
+      <th>Status</th>
+      <th>Update</th>
+      <th>Actions</th>
+    </tr> 
+  </thead>
+  <tbody>
+    <tr *ngFor="let todo of todos">
+      <td>{{todo.id}}</td>
+      <td>{{todo.description}}</td>
+      <td>{{todo.targetDate | date}}</td>
+      <td>{{todo.done}}</td>
+      <td><button (click)="updateTodo(todo.id)" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-pencil"></span></button></td>
+      <td><button (click)="deleteTodo(todo.id)" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-trash"></span></button></td>
+    </tr>
+  </tbody>
+  </table>
+</div>
