@@ -10,7 +10,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Id</th>
+      <!-- <th>Id</th> -->
       <th>Description</th>
       <th>Target Date</th>
       <th>Status</th>
@@ -20,7 +20,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let todo of todos">
-      <td>{{todo.id}}</td>
+      <!-- <td>{{todo.id}}</td> -->
       <td>{{todo.description}}</td>
       <td>{{todo.targetDate | date}}</td>
       <td>{{todo.done}}</td>
@@ -29,4 +29,7 @@
     </tr>
   </tbody>
   </table>
+<div class="row">
+  <td><button (click)="addTodo()" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-plus"> Todo</span></button></td>
+</div>
 </div>
