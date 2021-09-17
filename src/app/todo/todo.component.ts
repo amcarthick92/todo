@@ -21,7 +21,7 @@ todo:Todo
 this.id=this.route.snapshot.params['id'];
 this.todo= new Todo(this.id,'',false,new Date());
 if(this.id!=-1){
-this.todoService.retrieveTodo('amcarthick',this.id)
+this.todoService.retrieveTodo('user',this.id)
     .subscribe(
 data=>this.todo=data
     )
@@ -30,7 +30,7 @@ data=>this.todo=data
 
   saveTodo(){
     if(this.id==-1){
-      this.todoService.createTodo('amcarthick', this.todo)
+      this.todoService.createTodo('user', this.todo)
     .subscribe(
       data=> {
         console.log(data);
@@ -39,7 +39,7 @@ data=>this.todo=data
     )
 
     }else{
-    this.todoService.updateTodo('amcarthick',this.id, this.todo)
+    this.todoService.updateTodo('user',this.id, this.todo)
     .subscribe(
       data=> {
         console.log(data);

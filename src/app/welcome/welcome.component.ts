@@ -25,8 +25,9 @@ welcomeMessageFromService : string
   //   );
 
     getWelcomeMessageWithVariable(name){
-      this.service.executeHelloWorldBeanServiceWithPathVariable(this.name).subscribe(
-        response => this.handleSuccessfullResponse(response),
+     this.service.executeHelloWorldBeanServiceWithPathVariable(this.name).subscribe(
+     // this.service.executeHelloWorldBeanService().subscribe( 
+     response => this.handleSuccessfullResponse(response),
         error => this.handleErrorResponse(error)
       );
     console.log("get last welcome message called!!");
@@ -34,8 +35,8 @@ welcomeMessageFromService : string
   }
   handleSuccessfullResponse(response){
     console.log(response);
-    this.welcomeMessageFromService = response.mesage;
-    console.log(response.mesage);
+    this.welcomeMessageFromService = response.message;
+    console.log(response.message);
 
   }
   handleErrorResponse(error){ 
@@ -45,3 +46,12 @@ welcomeMessageFromService : string
     this.welcomeMessageFromService = error.error.message;
   }
 }
+
+// Access to XMLHttpRequest at 'http://localhost:8081//hello-world/path-variable/amcarthick' 
+// from origin 'http://localhost:4200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' 
+// header is present on the requested resource.
+
+// Access to XMLHttpRequest at 'http://localhost:8081//hello-world/path-variable/amcarthick' 
+// from origin 'http://localhost:4200' has been blocked by CORS 
+// policy: Response to preflight request doesn't pass access control check:
+//  No 'Access-Control-Allow-Origin' header is present on the requested resource.

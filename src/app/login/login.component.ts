@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BasicAuthenticationService } from '../service/basic-authentication.service';
 import { HardcodedAuthenticationService } from '../service/hardcoded-authentication.service';
 
 @Component({
@@ -8,13 +9,14 @@ import { HardcodedAuthenticationService } from '../service/hardcoded-authenticat
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-username ='amcarthick'
-password='1234';
+username ='user'
+password='password';
 invalidLogin=false;
 errorMessage='Inavlid Credential';
 
   constructor(private route: Router,
-    private hardcodedAuthenticationService: HardcodedAuthenticationService) { }
+    private hardcodedAuthenticationService: HardcodedAuthenticationService,
+    private basicAuthenticationService: BasicAuthenticationService) { }
 private hardcodedA
   ngOnInit() {
   }
@@ -28,5 +30,19 @@ private hardcodedA
     }else{
       this.invalidLogin=true
     }
+  }
+
+  handleBasicAuthLogin(){
+    this.basicAuthenticationService.executeAuthenticationService(this.username, this.password)
+     .subscribe(
+        data =>{
+          console.log("exec");
+          this.route.navigate(['welcome',this.username])
+          this.invalidLogin=false
+        },
+        error =>{
+          this.invalidLogin=true
+        }
+     );
   }
 }
